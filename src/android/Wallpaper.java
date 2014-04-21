@@ -14,6 +14,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -24,11 +25,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.Log;
 
 
 public class Wallpaper extends CordovaPlugin 
 {
+	
 	public static final String SET_WALLPAPER = "setwallpaper";
 	public static final String SAVE_WALLPAPER = "savewallpaper";
 	URL url;
