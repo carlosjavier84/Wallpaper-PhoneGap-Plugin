@@ -35,6 +35,14 @@ public class Wallpaper extends CordovaPlugin
 	@Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
+        	
+        	// FIXME: Temporal patch for android.os.NetworkOnMainThreadException
+        	// Correct solution must use an Async Task for network tasks (fetching the image for example) 
+        	if (android.os.Build.VERSION.SDK_INT > 9) {
+        	    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        	    StrictMode.setThreadPolicy(policy);
+        	}
+        	
         	JSONObject arg_object = args.getJSONObject(0);
         	String path = arg_object.getString("imagePath");
             String imageTitle = arg_object.getString("imageTitle");
